@@ -1,6 +1,6 @@
 import { Button, TextArea } from '@apideck/components'
 import { useState } from 'react'
-import { sendSpringMessage } from 'utils/sendSpringMessage'
+// import { sendSpringMessage } from 'utils/sendSpringMessage'
 import { useSpringMessages } from 'utils/useSpringMessages'
 
 const SpringMessageForm = () => {
@@ -9,9 +9,11 @@ const SpringMessageForm = () => {
 
   const handleSubmit = async (e?: any) => {
     e?.preventDefault()
-    //addSpringMessage(content)
-    const r = await sendSpringMessage([])
-    setContent(r.data.result.output.text)
+    addSpringMessage(content)
+    setContent('')
+    // const reply = await sendSpringMessage([])
+    // setContent(reply.data.result.output.text)
+    // addSpringMessage(reply)
   }
 
   return (
