@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import logger from '../../utils/logger';
 
 export default async function createMessage(req: NextApiRequest, res: NextApiResponse) {
   const { messages } = req.body
@@ -12,6 +13,7 @@ export default async function createMessage(req: NextApiRequest, res: NextApiRes
   })
 
   try {
+    logger.info('About to call the springboot backend.')
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -20,6 +22,7 @@ export default async function createMessage(req: NextApiRequest, res: NextApiRes
       }
     })
     const data = await response.json()
+    logger.info(data)
     res.status(200).json({ data })
   } catch (error) {
     res.status(500).json({ error: error.message })
