@@ -48,7 +48,7 @@ export function SpringMessagesProvider({ children }: { children: ReactNode }) {
       // Add the user message to the state so we can see it immediately
       setMessages(newMessages)
 
-      const { data } = await sendSpringMessage(newMessages)
+      const { data } = await sendSpringMessage(newMessage)
       const reply = data.result.output.text
       const responseMessage: ChatCompletionRequestMessage = {
         role: 'assistant',
