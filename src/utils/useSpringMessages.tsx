@@ -49,7 +49,8 @@ export function SpringMessagesProvider({ children }: { children: ReactNode }) {
       setMessages(newMessages)
 
       const { data } = await sendSpringMessage(newMessage)
-      const reply = data.result.output.text
+      const reply = data.answer
+
       const responseMessage: ChatCompletionRequestMessage = {
         role: 'assistant',
         content: reply

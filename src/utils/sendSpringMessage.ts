@@ -18,11 +18,20 @@ export const sendSpringMessage = async (chatMessage: ChatCompletionRequestMessag
 
     console.log('myQuery: ' + myQuery)
 
-    const response = await fetch('/api/springIntegration?message=' + myQuery, {
-      method: 'GET'
-    })
+    // example GET
+    // const response = await fetch('/api/springIntegration?message=' + myQuery, {
+    //   method: 'GET'
+    // })
+    // return await response.json()
 
-    return await response.json()
+    // example POST
+    const mapBody = { 'question': myQuery };
+    const response = await fetch('/api/springIntegrationPost', {
+      method: 'POST',
+      body: JSON.stringify(mapBody),
+    });
+
+    return await response.json();
   } catch (error) {
     console.log(error)
     // logger.error(error)
